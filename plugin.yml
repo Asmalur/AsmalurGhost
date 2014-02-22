@@ -1,0 +1,14 @@
+name: AsmalurGhost
+main: me.JCW313.AsmalurGhost.AsmalurGhost
+version: 1.1.6
+description: >
+             Hide new players.
+Permissions:
+  access.ghost:
+    description: Hides new players!
+    default: false
+commands:
+  authorize:
+    description: Enable player to fully access game.
+    permission: asmalurghost.authorize
+    permission-message: You don't have permission.
