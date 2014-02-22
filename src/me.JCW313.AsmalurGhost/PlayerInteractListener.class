@@ -1,0 +1,63 @@
+package me.JCW313.AsmalurGhost;
+
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.HumanEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+
+public class PlayerInteractListener implements Listener {
+	public static AsmalurGhost plugin;
+	
+	@EventHandler
+    public void onPlayerInteract(PlayerInteractEvent event){
+		Entity p = event.getPlayer();
+				
+		if(p instanceof Player){
+			Player player = (Player) p;
+			if(player.hasPermission("access.ghost")){
+			event.setCancelled(true);
+			}
+		}
+	}
+	
+	@EventHandler
+    public void onPlayerInteractEntity(PlayerInteractEntityEvent event){
+		Entity e = event.getPlayer();
+				
+		if(e instanceof Player){
+			Player player = (Player) e;
+			if(player.hasPermission("access.ghost")){
+			event.setCancelled(true);
+			}
+		}
+	}
+	
+	@EventHandler
+    public void onEntityDamageByEntity(EntityDamageByEntityEvent event){
+		Entity d = event.getDamager();
+		
+		if(d instanceof Player){
+			Player player = (Player) d;
+			if(player.hasPermission("access.ghost")){
+			event.setCancelled(true);
+			}
+		}
+	}
+
+	@EventHandler
+	  public void onInventoryClick(InventoryClickEvent event) {
+		HumanEntity i = event.getWhoClicked();
+		
+		if(i instanceof Player){
+			Player p = (Player) i;
+			if(p.hasPermission("access.ghost")){
+				event.setCancelled(true);
+			}
+		}
+	}
+}
